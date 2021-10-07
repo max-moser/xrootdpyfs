@@ -4,7 +4,9 @@
 # xrootdpyfs is free software; you can redistribute it and/or modify it under the
 # terms of the Revised BSD License; see LICENSE file for more details.
 
-include .lgtm
+exclude .dockerignore
+exclude .editorconfig
+exclude .lgtm
 include LICENSE
 include MAINTAINERS AUTHORS CHANGES README.rst
 include .coveragerc run-tests.sh
@@ -14,3 +16,11 @@ include examples/*.py
 recursive-include docs/_themes *.py *.css *.css_t *.conf *.html README
 recursive-include docs/_templates *.html
 recursive-include .github/workflows *.yml
+
+# added by check-manifest
+include *.rst
+include *.sh
+include Dockerfile
+include pytest.ini
+recursive-include tests *.dat
+recursive-include tests *.txt
