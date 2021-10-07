@@ -56,7 +56,7 @@ RUN pip3 install ipython \
 RUN rpm --queryformat "%{VERSION}" -q xrootd
 RUN XROOTD_V=`rpm --queryformat "%{VERSION}" -q xrootd` && \
     echo "RPM xrootd version installed: $XROOTD_V" && \
-    pip3 install xrootd=="$XROOTD_V" "fs<2.0"
+    pip3 install xrootd=="$XROOTD_V" "fs>=2.0,<3.0"
 
 # Add sources to `code` and work there:
 WORKDIR /code
