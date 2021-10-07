@@ -24,6 +24,7 @@ from fs.errors import BackReferenceError, DestinationExistsError, \
     UnsupportedError
 from mock import Mock
 from XRootD.client.responses import XRootDStatus
+
 from xrootdpyfs import XRootDPyFile, XRootDPyFS
 from xrootdpyfs.utils import spliturl
 
@@ -184,8 +185,8 @@ def test_makedir(tmppath):
     assert exists(join(tmppath, "somedir"))
 
     # if the path is already a directory, and allow_recreate is False
-    assert pytest.raises(DestinationExistsError, XRootDPyFS(rooturl).makedir,
-                         "data")
+    expected = FSError
+    assert pytest.raises(expected, XRootDPyFS(rooturl).makedir, "data")
 
     # allow_recreate
     assert XRootDPyFS(rooturl).makedir("data", allow_recreate=True)
@@ -673,8 +674,8 @@ def test_copy_bad(tmppath):
     dst_folder_new = "data/anothernewfolder/"
 
     # Destination exists
-    pytest.raises(
-        DestinationExistsError, fs.copy, src_exists, dst_exists)
+    expected = FSError
+    pytest.raises(expected, fs.copy, src_exists, dst_exists)
     pytest.raises(
         DestinationExistsError, fs.copy, src_exists, src_exists)
     pytest.raises(

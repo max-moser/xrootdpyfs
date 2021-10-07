@@ -19,13 +19,14 @@ import cProfile
 import os
 import pstats
 import shutil
-import StringIO
 import tempfile
 import time
+from io import StringIO
 from os.path import join
 
 from fs.opener import opener
 from XRootD import client
+
 from xrootdpyfs import XRootDPyOpener  # no-qa
 
 
@@ -99,7 +100,7 @@ def profile_end(pr):
     sortby = 'tottime'
     ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
     ps.print_stats()
-    print s.getvalue()
+    print(s.getvalue())
 
 
 def main():
@@ -119,6 +120,7 @@ def main():
         profile_end(pr)
     finally:
         teardown(tmppath)
+
 
 if __name__ == "__main__":
     main()

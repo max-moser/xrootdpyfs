@@ -25,6 +25,7 @@ from fs.errors import InvalidPathError, PathError, ResourceNotFoundError, \
 from fs.opener import fsopendir, opener
 from mock import Mock
 from XRootD.client.responses import XRootDStatus
+
 from xrootdpyfs import XRootDPyFile
 from xrootdpyfs.utils import is_valid_path, is_valid_url
 
